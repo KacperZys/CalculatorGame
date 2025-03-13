@@ -39,5 +39,29 @@ namespace CalculatorGame
 
             return (range[0], range[1]);
         }
+
+        public (int, int) GetRangeForDivision()
+        {
+            Random random = new Random();
+            int[] range = new int[2];
+
+            switch (Level)
+            {
+                case DifficultyLvl.Easy:
+                    range[0] = random.Next(1, 100);
+                    range[1] = random.Next(1, 100);
+                    break;
+                case DifficultyLvl.Medium:
+                    range[0] = random.Next(1, 500);
+                    range[1] = random.Next(1, 500);
+                    break;
+                case DifficultyLvl.Hard:
+                    range[0] = random.Next(1, 1000);
+                    range[1] = random.Next(1, 1000);
+                    break;
+            }
+
+            return (range[0], range[1]);
+        }
     }
 }

@@ -30,14 +30,13 @@ namespace CalculatorGame
 
         internal static int[] GetDivisionNumbers(Difficulty difLvl)
         {
-            (int firstNumber, int secondNumber) = difLvl.GetRange();
-            secondNumber *= 10;
+            (int firstNumber, int secondNumber) = difLvl.GetRangeForDivision();
 
             var result = new int[2];
 
             while (firstNumber % secondNumber != 0)
             {
-                (firstNumber, secondNumber) = difLvl.GetRange();
+                (firstNumber, secondNumber) = difLvl.GetRangeForDivision();
                 secondNumber *= 10;
             }
 
@@ -136,6 +135,14 @@ namespace CalculatorGame
                 stopwatch.Elapsed.Hours, stopwatch.Elapsed.Minutes, stopwatch.Elapsed.Seconds);
 
             Console.WriteLine($"Elapsed time: {elapsedTime}");
+        }
+
+        internal static string GetRandomOperation()
+        {
+            var operators = new List<string> { "+", "-", "*", "/" };
+            Random random = new Random();
+            int index = random.Next(operators.Count);
+            return operators[index];
         }
     }
 }

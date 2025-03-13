@@ -172,5 +172,103 @@ namespace CalculatorGame
             Console.ReadLine();
             Helpers.AddToHistory(score, GameType.Addition, difLvl.Level, stopwatch);
         }
+
+        internal void RandomGame(string message, Difficulty difLvl)
+        {
+            var score = 0;
+            Stopwatch stopwatch = Helpers.StartTimer();
+
+            (int firstNumber, int secondNumber) = difLvl.GetRange();
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Clear();
+                Console.WriteLine(message);
+
+                (firstNumber, secondNumber) = difLvl.GetRange();
+
+                string operation = Helpers.GetRandomOperation();
+                string? result;
+
+                switch (operation)
+                {
+                    case "+":
+                        Console.WriteLine($"{firstNumber} + {secondNumber}");
+                        result = Console.ReadLine();
+                        result = Helpers.ValidateResult(result);
+
+                        if (int.Parse(result) == firstNumber + secondNumber)
+                        {
+                            
+                            Console.WriteLine("Your answer was correct! Type any key for the next question");
+                            score++;
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Your answer was incorrect. Type any key for the next question");
+                            Console.ReadLine();
+                        }
+                        break;
+                    case "-":
+                        Console.WriteLine($"{firstNumber} - {secondNumber}");
+                        result = Console.ReadLine();
+                        result = Helpers.ValidateResult(result);
+
+                        if (int.Parse(result) == firstNumber - secondNumber)
+                        {
+                            Console.WriteLine("Your answer was correct! Type any key for the next question");
+                            score++;
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Your answer was incorrect. Type any key for the next question");
+                            Console.ReadLine();
+                        }
+                        break;
+                    case "*":
+                        Console.WriteLine($"{firstNumber} * {secondNumber}");
+                        result = Console.ReadLine();
+                        result = Helpers.ValidateResult(result);
+
+                        if (int.Parse(result) == firstNumber * secondNumber)
+                        {
+                            Console.WriteLine("Your answer was correct! Type any key for the next question");
+                            score++;
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Your answer was incorrect. Type any key for the next question");
+                            Console.ReadLine();
+                        }
+                        break;
+                    case "/":
+                        Console.WriteLine($"{firstNumber} / {secondNumber}");
+                        result = Console.ReadLine();
+                        result = Helpers.ValidateResult(result);
+
+                        if (int.Parse(result) == firstNumber / secondNumber)
+                        {
+                            Console.WriteLine("Your answer was correct! Type any key for the next question");
+                            score++;
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Your answer was incorrect. Type any key for the next question");
+                            Console.ReadLine();
+                        }
+                        break;
+                }
+            }
+
+            Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
+            Helpers.StopTimer(stopwatch);
+            Helpers.DisplayTimeElapsed(stopwatch);
+            Console.ReadLine();
+            Helpers.AddToHistory(score, GameType.Addition, difLvl.Level, stopwatch);
         }
+    }
 }

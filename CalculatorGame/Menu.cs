@@ -33,6 +33,7 @@ A - Addition
 S - Substraction
 M - Multiplication
 D - Division
+R - Random
 C - Change Difficulty
 Q - Quit the program
 ");
@@ -61,6 +62,9 @@ Q - Quit the program
                         break;
                     case "d":
                         gamesClass.DivisionGame("Division game", difLvl);
+                        break;
+                    case "r":
+                        gamesClass.RandomGame("Random game", difLvl);
                         break;
                     case "c":
                         difLvl = Helpers.SetDifficultyLevel(Helpers.GetDifficultyLvl());
